@@ -73,7 +73,23 @@
         <style>#nav{opacity:1}.justified-gallery img{opacity:1}</style>
     </noscript>
     <link rel="stylesheet" href="./self/self.css" />
+    <style>
+        #pagination .current{
+            background: #00c4b6;
+            color: #ffffff;
+            cursor: default;
+        }
 
+        #pagination button {
+            display: inline-block;
+            margin: 0 .2rem;
+            min-width: 1.2rem;
+            height: 1.2rem;
+            text-align: center;
+            line-height: 1.2rem;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 <div id="mobile-sidebar">
@@ -227,17 +243,9 @@
     <main class="layout_page" id="content-inner">
         <div class="recent-posts" id="recent-posts">
 
-
-
             <nav id="pagination">
-<!--                <div class="pagination">-->
-<!--                    <span class="page-number current">1</span>-->
-<!--                    <a class="page-number" href="/page/2/">2</a>-->
-<!--                    <a class="extend next" rel="next" href="/page/2/"><i class="fas fa-chevron-right fa-fw"></i></a>-->
-<!--                </div>-->
+
             </nav>
-
-
 
         </div>
         <div class="aside_content" id="aside_content">

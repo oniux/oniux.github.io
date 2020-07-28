@@ -10,3 +10,10 @@
 .totalPages span,.totalSize span{color:#0073A9;margin:0 5px}
 /*button禁用*/
 .page_div button:disabled{opacity:.5;cursor:no-drop}
+
+
+#pagination .current{
+    background: #00c4b6;
+    color: #ffffff;
+    cursor: default;
+}

@@ -75,7 +75,7 @@ var Page={
 
 
 
-        $("#recent-posts").html(html);
+        $("#recent-posts").prepend(html);
 
     }
 };
