@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>亿人云 - A Simple and Card UI Design theme for Xppd</title>
+    <meta name="author" content="Jerry" />
+    <meta name="copyright" content="Jerry" />
+    <meta name="format-detection" content="telephone=no" />
+    <script>var activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+        }
+    }
+    var activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+        }
+    }
+
+    var getCookies = function (name) {
+        const value = `; ${document.cookie}`
+        const parts = value.split(`; ${name}=`)
+        if (parts.length === 2) return parts.pop().split(';').shift()
+    }
+
+    var autoChangeMode = '1'
+    var t = getCookies('theme')
+    if (autoChangeMode === '1') {
+        var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+        var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+        var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+        var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+        if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+                console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+                var now = new Date()
+                var hour = now.getHours()
+                var isNight = hour <= 6 || hour >= 18
+                isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+                if (Cookies.get('theme') === undefined) {
+                    e.matches ? activateDarkMode() : activateLightMode()
+                }
+            })
+        } else if (t === 'light') activateLightMode()
+        else activateDarkMode()
+    } else if (autoChangeMode === '2') {
+        now = new Date()
+        hour = now.getHours()
+        isNight = hour <= 6 || hour >= 18
+        if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+        else if (t === 'light') activateLightMode()
+        else activateDarkMode()
+    } else {
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+    }</script>
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/pageMe.css.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css" />
+    <script>(adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: 'ca-pub-8919908724705274',
+        enable_page_level_ads: 'true'
+    });</script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" />
+    <script>var GLOBAL_CONFIG = {
+        root: '/',
+        algolia: undefined,
+        localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查詢的內容：${query}"}},
+        translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+        noticeOutdate: undefined,
+        copy: {
+            success: '複製成功',
+            error: '複製錯誤',
+            noSupport: '瀏覽器不支援'
+        },
+        bookmark: {
+            message_prev: '按',
+            message_next: '鍵將本頁加入書籤'
+        },
+        runtime_unit: '天',
+        runtime: true,
+        copyright: {"limitCount":50,"languages":{"author":"作者: Jerry","link":"連結: ","source":"來源: Butterfly","info":"著作權歸作者所有。商業轉載請聯絡作者獲得授權，非商業轉載請註明出處。"}},
+        ClickShowText: undefined,
+        medium_zoom: false,
+        fancybox: true,
+        Snackbar: undefined,
+        justifiedGallery: {
+            js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+            css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+        },
+        baiduPush: false,
+        highlightCopy: true,
+        highlightLang: true,
+        isPhotoFigcaption: false,
+        islazyload: true,
+        isanchor: true
+    }</script>
+    <script id="config_change">var GLOBAL_CONFIG_SITE = {
+        isPost: true,
+        isHome: false,
+        isHighlightShrink: false,
+        isSidebar: true,
+        postUpdate: '2020-07-25 00:24:12'
+    }</script>
+    <noscript>
+        <style>
+            #nav {
+                opacity: 1
+            }
+            .justified-gallery img {
+                opacity: 1
+            }
+        </style>
+    </noscript>
+    <style>.card-announcement .social-button{margin: .6rem 0 0 0; text-align: center;}.card-announcement .social-button a{display: block; background-color: var(--btn-bg); color: var(--btn-color); line-height: 1.6rem; transition: all .3s; position: relative; z-index: 1;}.card-announcement .social-button a:first-child{margin-bottom: .4rem}</style>
+    <link rel="alternate" href="/atom.xml" title="Butterfly" type="application/atom+xml" />
+</head>
+<body>
+<div id="mobile-sidebar">
+    <div id="menu_mask"></div>
+    <div id="mobile-sidebar-menus">
+        <div class="mobile_author_icon">
+            <img class="avatar-img" src="/image/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar" />
+        </div>
+        <div class="mobile_post_data">
+            <div class="mobile_data_item is-center">
+                <div class="mobile_data_link">
+                    <a href="/archives/">
+                        <div class="headline">
+                            文章
+                        </div>
+                        <div class="length_num">
+                            15
+                        </div></a>
+                </div>
+            </div>
+            <div class="mobile_data_item is-center">
+                <div class="mobile_data_link">
+                    <a href="/tags/">
+                        <div class="headline">
+                            標籤
+                        </div>
+                        <div class="length_num">
+                            9
+                        </div></a>
+                </div>
+            </div>
+            <div class="mobile_data_item is-center">
+                <div class="mobile_data_link">
+                    <a href="/categories/">
+                        <div class="headline">
+                            分類
+                        </div>
+                        <div class="length_num">
+                            3
+                        </div></a>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="menus_items">
+            <div class="menus_item">
+                <a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a>
+            </div>
+            <div class="menus_item">
+                <a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 歸檔</span></a>
+            </div>
+            <div class="menus_item">
+                <a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a>
+            </div>
+            <div class="menus_item">
+                <a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a>
+            </div>
+            <div class="menus_item">
+                <a class="site-page"><i class="fa-fw fas fa-book"></i><span> 文檔</span><i class="fas fa-chevron-down expand"></i></a>
+                <ul class="menus_item_child">
+                    <li><a class="site-page" href="/posts/21cfbf15/"><span> &#55357;&#56960; 快速開始</span></a></li>
+                    <li><a class="site-page" href="/posts/dc584b87/"><span> &#55357;&#56529; 主題頁面</span></a></li>
+                    <li><a class="site-page" href="/posts/4aa8abbe/"><span> &#55357;&#57056; 主題配置-1</span></a></li>
+                    <li><a class="site-page" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li>
+                    <li><a class="site-page" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li>
+                    <li><a class="site-page" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li>
+                    <li><a class="site-page" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li>
+                </ul>
+            </div>
+            <div class="menus_item">
+                <a class="site-page"><i class="fa-fw fa fa-heartbeat"></i><span> 娛樂</span><i class="fas fa-chevron-down expand"></i></a>
+                <ul class="menus_item_child">
+                    <li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音樂</span></a></li>
+                    <li><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 圖庫</span></a></li>
+                    <li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 電影</span></a></li>
+                </ul>
+            </div>
+            <div class="menus_item">
+                <a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友鏈</span></a>
+            </div>
+            <div class="menus_item">
+                <a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-comment-dots"></i><span> 留言板</span></a>
+            </div>
+            <div class="menus_item">
+                <a class="site-page" href="https://github.com/jerryc127/hexo-theme-butterfly/issues/76" target="_blank" rel="noopener external nofollow noreferrer"><i class="fa-fw fas fa-cat"></i><span> 更多示例</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="body-wrap">
+    <header class="post-bg" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/material-3.png)">
+        <nav id="nav">
+            <span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">Butterfly</a></span>
+            <span class="pull-right menus">
+      <div id="search_button">
+       <a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜尋</span></a>
+      </div>
+      <div class="menus_items">
+       <div class="menus_item">
+        <a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a>
+       </div>
+       <div class="menus_item">
+        <a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 歸檔</span></a>
+       </div>
+       <div class="menus_item">
+        <a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a>
+       </div>
+       <div class="menus_item">
+        <a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a>
+       </div>
+       <div class="menus_item">
+        <a class="site-page"><i class="fa-fw fas fa-book"></i><span> 文檔</span><i class="fas fa-chevron-down expand"></i></a>
+        <ul class="menus_item_child">
+         <li><a class="site-page" href="/posts/21cfbf15/"><span> &#55357;&#56960; 快速開始</span></a></li>
+         <li><a class="site-page" href="/posts/dc584b87/"><span> &#55357;&#56529; 主題頁面</span></a></li>
+         <li><a class="site-page" href="/posts/4aa8abbe/"><span> &#55357;&#57056; 主題配置-1</span></a></li>
+         <li><a class="site-page" href="/posts/ceeb73f/"><span> ⚔️ 主題配置-2</span></a></li>
+         <li><a class="site-page" href="/posts/98d20436/"><span> ❓ 主題問答</span></a></li>
+         <li><a class="site-page" href="/posts/4073eda/"><span> ⚡️ 進階教程</span></a></li>
+         <li><a class="site-page" href="/posts/198a4240/"><span> ✨ 更新日誌</span></a></li>
+        </ul>
+       </div>
+       <div class="menus_item">
+        <a class="site-page"><i class="fa-fw fa fa-heartbeat"></i><span> 娛樂</span><i class="fas fa-chevron-down expand"></i></a>
+        <ul class="menus_item_child">
+         <li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音樂</span></a></li>
+         <li><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 圖庫</span></a></li>
+         <li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 電影</span></a></li>
+        </ul>
+       </div>
+       <div class="menus_item">
+        <a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友鏈</span></a>
+       </div>
+       <div class="menus_item">
+        <a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-comment-dots"></i><span> 留言板</span></a>
+       </div>
+       <div class="menus_item">
+        <a class="site-page" href="https://github.com/jerryc127/hexo-theme-butterfly/issues/76" target="_blank" rel="noopener external nofollow noreferrer"><i class="fa-fw fas fa-cat"></i><span> 更多示例</span></a>
+       </div>
+      </div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span>
+        </nav>
+        <div id="post-info">
+            <div id="post-title">
+                <div class="posttitle">
+                    Butterfly 打賞
+                </div>
+            </div>
+            <div id="post-meta">
+                <div class="meta-firstline">
+                    <span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2020-05-28T14:42:48.000Z" title="發表於 2020-05-28 22:42:48">2020-05-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2020-07-24T16:24:12.621Z" title="更新於 2020-07-25 00:24:12">2020-07-25</time></span>
+                </div>
+                <div class="meta-secondline">
+                    <span class="post-meta-separator">|</span>
+                    <span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字數總計:</span><span class="word-count">142</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">閲讀時長:</span><span>1分鐘</span></span>
+                    <span class="post-meta-separator">|</span>
+                    <span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀量:</span><span id="busuanzi_value_page_pv"></span></span>
+                    <span class="post-meta-separator">|</span>
+                    <span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">評論數:</span><a href="/posts/6ad51b4/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/posts/6ad51b4/" itemprop="commentCount"></span></a></span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="layout_post" id="content-inner">
+        <article id="post">
+            <div class="post-content" id="article-container">
+                <iframe runat="server" src="you page's url" width="750" height="30" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes"></iframe>
+            </div>
+            <div class="post-copyright">
+                <div class="post-copyright__author">
+                    <span class="post-copyright-meta">文章作者: </span>
+                    <span class="post-copyright-info"><a href="mailto:undefined" rel="external nofollow noreferrer">Jerry</a></span>
+                </div>
+                <div class="post-copyright__type">
+                    <span class="post-copyright-meta">文章連結: </span>
+                    <span class="post-copyright-info"><a href="https://demo.jerryc.me/posts/6ad51b4/">https://demo.jerryc.me/posts/6ad51b4/</a></span>
+                </div>
+                <div class="post-copyright__notice">
+                    <span class="post-copyright-meta">版權聲明: </span>
+                    <span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。轉載請註明來自 <a href="https://demo.jerryc.me" target="_blank">Butterfly</a>！</span>
+                </div>
+            </div>
+            <div class="tag_share">
+                <div class="post-meta__tag-list"></div>
+                <div class="post_share">
+                    <div class="social-share" data-image="https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/material-3.png" data-sites="facebook,twitter,wechat,weibo,qq"></div>
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" />
+                    <script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer="defer"></script>
+                </div>
+            </div>
+            <div class="post-reward">
+                <div class="reward-button">
+                    <i class="fas fa-qrcode"></i> 打賞
+                    <div class="reward-main">
+                        <ul class="reward-all">
+                            <li class="reward-item"><img class="post-qr-code__img" src="/image/wechat.jpg" alt="微信" onclick="window.open('/image/wechat.jpg')" />
+                                <div class="post-qr-code__desc">
+                                    微信
+                                </div></li>
+                            <li class="reward-item"><img class="post-qr-code__img" src="/image/alipay.jpg" alt="支付寶" onclick="window.open('/image/alipay.jpg')" />
+                                <div class="post-qr-code__desc">
+                                    支付寶
+                                </div></li>
+                            <li class="reward-item"><img class="post-qr-code__img" src="/image/paypal.png" alt="Paypal（點擊圖片跳轉）" onclick="window.open('https://paypal.me/iamjerrywong?locale.x=zh_HK')" />
+                                <div class="post-qr-code__desc">
+                                    Paypal（點擊圖片跳轉）
+                                </div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <nav class="pagination-post" id="pagination">
+                <div class="prev-post pull-left">
+                    <a href="/posts/b37b5fe3/"><img class="prev-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/hexo-theme-butterfly-doc-cover.jpg" onerror="onerror=null;src='/img/404.jpg'" />
+                        <div class="pagination-info">
+                            <div class="label">
+                                上一篇
+                            </div>
+                            <div class="prev_info">
+                                自定義代碼配色
+                            </div>
+                        </div></a>
+                </div>
+                <div class="next-post pull-right">
+                    <a href="/posts/198a4240/"><img class="next-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/hexo-theme-butterfly-doc-cover.jpg" onerror="onerror=null;src='/img/404.jpg'" />
+                        <div class="pagination-info">
+                            <div class="label">
+                                下一篇
+                            </div>
+                            <div class="next_info">
+                                Butterfly 安裝文檔(七) 更新日誌
+                            </div>
+                        </div></a>
+                </div>
+            </nav>
+            <hr />
+            <div id="post-comment">
+                <div class="comment-head">
+                    <div class="comment-headline">
+                        <i class="fas fa-comments fa-fw"></i>
+                        <span> 評論</span>
+                    </div>
+                </div>
+                <div class="comment-wrap">
+                    <div>
+                        <div class="vcomment" id="vcomment"></div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+    <footer id="footer" style="background-image: url(https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/material-3.png)" data-type="photo">
+        <div id="footer-wrap">
+            <div class="copyright">
+                &copy;2019 - 2020 By 1ryun
+            </div>
+            <div class="framework-info">
+                <span>框架 </span>
+                <a href="/" target="_blank" rel="noopener external nofollow noreferrer"><span>1ryun.com</span></a>
+                <span class="footer-separator">|</span>
+                <span>主題 </span>
+                <a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener external nofollow noreferrer"><span>Butterfly</span></a>
+            </div>
+        </div>
+    </footer>
+</div>
+<section id="rightside">
+    <div id="rightside-config-hide">
+        <button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button>
+        <button id="font_plus" type="button" title="放大字型"><i class="fas fa-plus"></i></button>
+        <button id="font_minus" type="button" title="縮小字型"><i class="fas fa-minus"></i></button>
+        <button id="translateLink" type="button" title="簡繁轉換">簡</button>
+        <button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button>
+    </div>
+    <div id="rightside-config-show">
+        <button id="rightside_config" type="button" title="設定"><i class="fas fa-cog"></i></button>
+        <a id="to_comment" href="#post-comment" title="直達評論"><i class="fas fa-comments"></i></a>
+        <button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button>
+        <button id="go-up" type="button" title="回到頂部"><i class="fas fa-arrow-up"></i></button>
+    </div>
+</section>
+<div class="search-dialog" id="local-search">
+    <div class="search-dialog__title" id="local-search-title">
+        本地搜尋
+    </div>
+    <div id="local-input-panel">
+        <div id="local-search-input">
+            <div class="local-search-box">
+                <input class="local-search-box--input" placeholder="搜尋文章" type="text" />
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div id="local-search-results">
+        <div id="local-hits"></div>
+        <div id="local-stats">
+            <div class="local-search-stats__hr" id="hr">
+                <span>Powered by</span>
+                <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener external nofollow noreferrer" style="color:#49B1F5;">hexo-generator-search</a>
+            </div>
+        </div>
+    </div>
+    <span class="search-close-button"><i class="fas fa-times"></i></span>
+</div>
+<div id="search-mask"></div>
+<div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/search/local-search.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/tw_cn.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async=""></script>
+
+    <script src="./js/pageMe.js"></script>
+</div>
+</body>
+</html>
