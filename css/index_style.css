@@ -44,8 +44,8 @@ a,img{text-decoration:none;border:none;}
 .page1 p{letter-spacing:10px;margin:20px 0}
 .page1 .nav .btn{padding:10px 40px;background:0 0;border-radius:4px;border:2px solid #FFF;color:#FFF;cursor:pointer;margin-top:20px;font-family:'Microsoft YaHei';display:inline-block}
 .page1 .next{display:block;width:50px;height:50px;border-radius:50%;position:absolute;bottom:30px;left:50%;margin-left:-25px !important;z-index:0;-webkit-transition:all .5s ease-out;transition:all .5s ease-out;cursor:pointer}
-.page1 .next:hover{-webkit-animation:nextanimation 1s linear;animation:nextanimation 1s linear;background-color:#6bc30d}
-.page1 .next:after{font-family:FontAwesome;content:"\f107";color:#fff;font-size:3rem;display:table;margin:0 auto}
+/*.page1 .next:hover{-webkit-animation:nextanimation 1s linear;animation:nextanimation 1s linear;background-color:#6bc30d}*/
+.page1 .next:after{font-family:FontAwesome;content:"\f107";color:#fff;font-size:1.8rem;display:table;margin:0 auto}
 /*第一屏 结束*/
 /*第二屏 开始*/
 .page2,.page3,.page4,.page5{width:90%;position:relative;margin:0 auto;padding-top:.1px;font-family:"Microsoft YaHei"}
@@ -137,4 +137,46 @@ a,img{text-decoration:none;border:none;}
 @-webkit-keyframes object_three {75% {-webkit-transform:scale(0);}
 }
 @keyframes object_three {75% {transform:scale(0);-webkit-transform:scale(0);}
+}
+
+
+html {
+    font-size : 20px;
+}
+@media only screen and (min-width: 401px){
+    html {
+        font-size: 25px !important;
+    }
+}
+@media only screen and (min-width: 428px){
+    html {
+        font-size: 26.75px !important;
+    }
+}
+@media only screen and (min-width: 481px){
+    html {
+        font-size: 30px !important;
+    }
+}
+@media only screen and (min-width: 569px){
+    html {
+        font-size: 35px !important;
+    }
+}
+@media only screen and (min-width: 641px){
+    html {
+        font-size: 40px !important;
+    }
+}
+.site_subtitle{
+    text-align: center;
+    line-height: 1.5;
+    margin-top: 10px;
+    padding: 15px;
+}
+#subtitle{
+    font-size: .8rem;
+}
+.site_title{
+    font-size:1.2rem;
 }

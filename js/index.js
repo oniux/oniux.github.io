@@ -27,3 +27,31 @@
     });
 
 });
+
+$(function () {
+    Page.LoadBannerText();
+
+});
+
+var Page={
+    LoadBannerText:function () {
+
+
+       // //时间差的毫秒数
+
+
+        $.getJSON('https://api.btstu.cn/yan/api.php?charset=utf-8&encode=json',function (data) {
+            var string = data.text;
+            $('#subtitle').typed({
+                strings: ["　　" + string],
+                startDelay: 300,
+                typeSpeed: 150,
+                loop: true,
+                backSpeed: 50,
+            });
+
+        })
+
+    }
+};
+
