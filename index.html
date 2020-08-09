@@ -1,524 +1,236 @@
 <!DOCTYPE html>
-<html lang="zh-TW" data-theme="light">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>亿人云 - A Simple and Card UI Design theme for Xppd</title>
-    <meta name="author" content="Jerry" />
-    <meta name="copyright" content="Jerry" />
-    <meta name="format-detection" content="telephone=no" />
-    <script>var activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
-        }
-    }
-    var activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
-        }
-    }
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap 101 Template</title>
 
-    var getCookies = function (name) {
-        const value = `; ${document.cookie}`
-        const parts = value.split(`; ${name}=`)
-        if (parts.length === 2) return parts.pop().split(';').shift()
-    }
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    var autoChangeMode = '1'
-    var t = getCookies('theme')
-    if (autoChangeMode === '1') {
-        var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
-        var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
-        var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
-        var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
-
-        if (t === undefined) {
-            if (isLightMode) activateLightMode()
-            else if (isDarkMode) activateDarkMode()
-            else if (isNotSpecified || hasNoSupport) {
-                console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
-                var now = new Date()
-                var hour = now.getHours()
-                var isNight = hour <= 6 || hour >= 18
-                isNight ? activateDarkMode() : activateLightMode()
-            }
-            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
-                if (Cookies.get('theme') === undefined) {
-                    e.matches ? activateDarkMode() : activateLightMode()
-                }
-            })
-        } else if (t === 'light') activateLightMode()
-        else activateDarkMode()
-    } else if (autoChangeMode === '2') {
-        now = new Date()
-        hour = now.getHours()
-        isNight = hour <= 6 || hour >= 18
-        if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
-        else if (t === 'light') activateLightMode()
-        else activateDarkMode()
-    } else {
-        if (t === 'dark') activateDarkMode()
-        else if (t === 'light') activateLightMode()
-    }</script>
-    <link rel="stylesheet" href="./css/index.css" />
-    <link rel="stylesheet" href="./css/pageMe.css.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css" />
-
-
-    <noscript>
-        <style>#nav{opacity:1}.justified-gallery img{opacity:1}</style>
-    </noscript>
-    <link rel="stylesheet" href="./self/self.css" />
-    <style>
-        #pagination .current{
-            background: #00c4b6;
-            color: #ffffff;
-            cursor: default;
-        }
-
-        #pagination button {
-            display: inline-block;
-            margin: 0 .2rem;
-            min-width: 1.2rem;
-            height: 1.2rem;
-            text-align: center;
-            line-height: 1.2rem;
-            cursor: pointer;
-        }
-    </style>
+    <link href="assets/layui/css/layui.css" rel="stylesheet" type="text/css">
+    <link href="assets/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/index_style.css" rel="stylesheet" type="text/css">
+    <link href="assets/animate.min.css" rel="stylesheet" type="text/css">
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
-<div id="mobile-sidebar">
-    <div id="menu_mask"></div>
-    <div id="mobile-sidebar-menus">
-        <div class="mobile_author_icon">
-            <img class="avatar-img" src="./image/avatar.png" onerror="onerror=null,src=&quot;/img/friend_404.gif&quot;" alt="avatar" />
-        </div>
-        <div class="mobile_post_data">
-            <div class="mobile_data_item is-center">
-                <div class="mobile_data_link">
-                    <a href="/archives/">
-                        <div class="headline">
-                            文章
-                        </div>
-                        <div class="length_num">
-                            15
-                        </div></a>
-                </div>
+<div id="menu" class="hover_animation menu_open" data-mark="false">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div id="navgation" class="navgation navgation_close">
+    <ul class="point">
+        <li><a href="#">首页</a></li>
+        <li><a href="article.html">博客</a></li>
+        <li><a href="message.html">留言</a></li>
+    </ul>
+    <div class="logo"><a>Mr.liu</a></div>
+</div>
+<div class="section" id="section1">
+    <div class="fp-tablecell">
+        <div class="page1">
+            <div class="nav wow zoomIn" data-wow-duration="2s">
+                <h1>ZQ-Blog</h1>
+                <p>只要朝着一个方向努力，一切都会变得得心应手</p>
+                <a class="layui-btn layui-btn-normal" style="margin-top: 20px" href="article.html">Enter Blog</a>
             </div>
-            <div class="mobile_data_item is-center">
-                <div class="mobile_data_link">
-                    <a href="/tags/">
-                        <div class="headline">
-                            標籤
-                        </div>
-                        <div class="length_num">
-                            9
-                        </div></a>
-                </div>
-            </div>
-            <div class="mobile_data_item is-center">
-                <div class="mobile_data_link">
-                    <a href="/categories/">
-                        <div class="headline">
-                            分類
-                        </div>
-                        <div class="length_num">
-                            3
-                        </div></a>
-                </div>
-            </div>
-        </div>
-        <hr />
-        <div class="menus_items">
-            <div class="menus_item">
-                <a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a>
-            </div>
-            <div class="menus_item">
-                <a class="site-page" href="/archives/"><i class="fa-fw fas fa-tags"></i><span> 时间线</span></a>
-            </div>
-
-
+            <a class="next wow fadeInUp" data-wow-duration="2s" id="next"></a>
         </div>
     </div>
 </div>
-<div id="body-wrap">
-    <header class="full_page" id="page-header" style="background-image:url(https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg)">
-        <nav id="nav">
-            <span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">亿人云</a></span>
-            <span class="pull-right menus">
-      <div id="search_button">
-       <a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a>
-      </div>
-      <div class="menus_items">
-       <div class="menus_item">
-        <a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a>
-       </div>
-       <div class="menus_item">
-        <a class="site-page" href="/archives/"><i class="fa-fw fas fa-tags"></i><span> 时间线</span></a>
-       </div>
-
-
-      </div>
-                <span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span>
-        </nav>
-        <div id="site-info">
-            <h1 id="site_title">亿人云,海量正版高清视频在线观看</h1>
-            <div id="site_subtitle">
-                <span id="subtitle"></span>
-            </div>
-            <div id="site_social_icons">
-                <a class="social-icon" href="https://github.com/jerryc127" target="_blank" title="Github"><i class="fab fa-github"></i></a>
-                <a class="social-icon" href="mailto:hwy0127@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
-                <a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a>
-            </div>
-        </div>
-        <div id="scroll_down">
-            <i class="fas fa-angle-down scroll-down-effects"></i>
-        </div>
-    </header>
-    <main class="layout_page" id="content-inner">
-        <div class="recent-posts" id="recent-posts">
-
-            <nav id="pagination">
-
-            </nav>
-
-        </div>
-        <div class="aside_content" id="aside_content">
-            <div class="card-widget card-info">
-                <div class="card-content">
-                    <div class="card-info-avatar is-center">
-                        <img class="avatar-img" src="/image/avatar.png" onerror="this.onerror=null,this.src=&quot;/img/friend_404.gif&quot;" alt="avatar" />
-                        <div class="author-info__name">
-                            Jerry
-                        </div>
-                        <div class="author-info__description">
-                            A Simple and Card UI Design theme for Xppd
-                        </div>
-                    </div>
-                    <div class="card-info-data">
-                        <div class="card-info-data-item is-center">
-                            <a href="/archives">
-                                <div class="headline">
-                                    文章
-                                </div>
-                                <div class="length_num">
-                                    15
-                                </div></a>
-                        </div>
-                        <div class="card-info-data-item is-center">
-                            <a href="/tags">
-                                <div class="headline">
-                                    標籤
-                                </div>
-                                <div class="length_num">
-                                    9
-                                </div></a>
-                        </div>
-                        <div class="card-info-data-item is-center">
-                            <a href="/categories">
-                                <div class="headline">
-                                    分類
-                                </div>
-                                <div class="length_num">
-                                    3
-                                </div></a>
-                        </div>
-                    </div>
-                    <div class="card-info-bookmark is-center">
-                        <button class="button--animated" id="bookmark-it" type="button" title="加入書籤"><i class="fas fa-bookmark"></i><span>加入書籤</span></button>
-                    </div>
-                    <div class="card-info-social-icons is-center">
-                        <a class="social-icon" href="https://github.com/jerryc127" target="_blank" title="Github"><i class="fab fa-github"></i></a>
-                        <a class="social-icon" href="mailto:hwy0127@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
-                        <a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a>
+<div class="section" id="section2">
+    <div class="fp-tablecell">
+        <div class="page2">
+            <div class="warp-box">
+                <div class="new-article">
+                    <div class="inner wow fadeInDown" data-wow-delay=".2s">
+                        <h1>博客分类</h1>
+                        <p>
+                            只要朝着一个方向努力
+                            <br>一切都会变得得心应手
+                        </p>
                     </div>
                 </div>
-            </div>
-            <div class="card-widget card-announcement">
-                <div class="card-content">
-                    <div class="item-headline">
-                        <i class="fas fa-bullhorn card-announcement-animation"></i>
-                        <span>公告</span>
-                    </div>
-                    <div class="announcement_content">
-                        If you have any questions, you can feedback on
-                        <a href="https://github.com/jerryc127/hexo-theme-butterfly/issues" style="color:#49b1f5">Github Issues</a> or
-                        <a href="https://jerryc.me/messageboard/" style="color:#49b1f5">Messageboard</a>, also you can join the Group.
-                        <div class="social-button">
-                            <a class="button--animated" href="https://jq.qq.com/?_wv=1027&amp;k=5KI3Jqb" target="_blank">Join QQ Group &#55357;&#56397;</a>
-                            <a class="button--animated" href="https://t.me/hexo_butterfly" target="_blank">Join Telegram Group &#55358;&#56606;</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-widget card-recent-post">
-                <div class="card-content">
-                    <div class="item-headline">
-                        <i class="fas fa-history"></i>
-                        <span>最新文章</span>
-                    </div>
-                    <div class="aside-recent-item">
-                        <div class="aside-recent-post">
-                            <a href="/posts/b37b5fe3/">
-                                <div class="aside-post-cover">
-                                    <img class="aside-post-bg" data-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/hexo-theme-butterfly-doc-cover.jpg" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" title="自定義代碼配色" alt="自定義代碼配色" />
+                <div class="layui-row">
+                    <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" style="padding: 0 10px">
+                        <div class="single-news">
+                            <div class="news-head">
+                                <img src="http://www.lzqcode.com/images/java.jpg">
+                                <a href="#" class="link"><i class="fa fa-link"></i></a>
+                            </div>
+                            <div class="news-content">
+                                <h4>
+                                    <a href="#">
+                                        Java专栏
+                                    </a>
+                                </h4>
+                                <div class="date">
+                                    2020年6月16日
                                 </div>
-                                <div class="aside-post-title">
-                                    <div class="aside-post_title" href="/posts/b37b5fe3/" title="自定義代碼配色">
-                                        自定義代碼配色
-                                    </div>
-                                    <time class="aside-post_meta post-meta__date" title="發表於 2020-06-13 20:41:59">2020-06-13</time>
-                                </div></a>
+                                <p>
+                                    本专栏主要分享Java的各种常见问题，包括java学习路线，java基础，框架，微服务，项目，面试题，希望通过这些知识的分享能够提升自己的java水平
+                                </p>
+                                <a href="#" class="btn">
+                                    阅读更多
+                                </a>
+                            </div>
                         </div>
-                        <div class="aside-recent-post">
-                            <a href="/posts/6ad51b4/">
-                                <div class="aside-post-cover">
-                                    <img class="aside-post-bg" data-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/material-7.png" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" title="亿人云 打賞" alt="亿人云 打賞" />
+                    </div>
+                    <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".2s" style="padding: 0 10px">
+                        <div class="single-news">
+                            <div class="news-head">
+                                <img src="http://www.lzqcode.com/images/web.jpg">
+                                <a href="#" class="link"><i class="fa fa-link"></i></a>
+                            </div>
+                            <div class="news-content">
+                                <h4>
+                                    <a href="#">
+                                        web前端专栏
+                                    </a>
+                                </h4>
+                                <div class="date">
+                                    2020年6月16日
                                 </div>
-                                <div class="aside-post-title">
-                                    <div class="aside-post_title" href="/posts/6ad51b4/" title="亿人云 打賞">
-                                        亿人云 打賞
-                                    </div>
-                                    <time class="aside-post_meta post-meta__date" title="發表於 2020-05-28 22:42:48">2020-05-28</time>
-                                </div></a>
+                                <p>
+                                    本栏目主要分享关于web前端的学习路线，基础知识，常用框架，面试题，项目等等
+                                </p>
+                                <a href="#" class="btn">
+                                    阅读更多
+                                </a>
+                            </div>
                         </div>
-                        <div class="aside-recent-post">
-                            <a href="/posts/198a4240/">
-                                <div class="aside-post-cover">
-                                    <img class="aside-post-bg" data-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/hexo-theme-butterfly-doc-cover.jpg" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" title="亿人云 安裝文檔(七) 更新日誌" alt="亿人云 安裝文檔(七) 更新日誌" />
+                    </div>
+                    <div class="layui-col-xs12 layui-col-sm4 layui-col-md4  wow fadeInUp" data-wow-delay=".4s" style="padding: 0 10px">
+                        <div class="single-news">
+                            <div class="news-head">
+                                <img src="http://www.lzqcode.com/images/dedecms.jpg">
+                                <a href="#" class="link"><i class="fa fa-link"></i></a>
+                            </div>
+                            <div class="news-content">
+                                <h4>
+                                    <a href="#">
+                                        DeDeCMS专栏
+                                    </a>
+                                </h4>
+                                <div class="date">
+                                    2020年6月16日
                                 </div>
-                                <div class="aside-post-title">
-                                    <div class="aside-post_title" href="/posts/198a4240/" title="亿人云 安裝文檔(七) 更新日誌">
-                                        亿人云 安裝文檔(七) 更新日誌
-                                    </div>
-                                    <time class="aside-post_meta post-meta__date" title="發表於 2020-05-28 22:41:59">2020-05-28</time>
-                                </div></a>
-                        </div>
-                        <div class="aside-recent-post">
-                            <a href="/posts/4073eda/">
-                                <div class="aside-post-cover">
-                                    <img class="aside-post-bg" data-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/hexo-theme-butterfly-doc-cover.jpg" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" title="亿人云 安裝文檔(六) 進階教程" alt="亿人云 安裝文檔(六) 進階教程" />
-                                </div>
-                                <div class="aside-post-title">
-                                    <div class="aside-post_title" href="/posts/4073eda/" title="亿人云 安裝文檔(六) 進階教程">
-                                        亿人云 安裝文檔(六) 進階教程
-                                    </div>
-                                    <time class="aside-post_meta post-meta__date" title="發表於 2020-05-28 22:39:25">2020-05-28</time>
-                                </div></a>
-                        </div>
-                        <div class="aside-recent-post">
-                            <a href="/posts/98d20436/">
-                                <div class="aside-post-cover">
-                                    <img class="aside-post-bg" data-src="https://cdn.jsdelivr.net/gh/jerryc127/CDN/img/hexo-theme-butterfly-doc-cover.jpg" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" title="亿人云 安裝文檔(五) 主題問答" alt="亿人云 安裝文檔(五) 主題問答" />
-                                </div>
-                                <div class="aside-post-title">
-                                    <div class="aside-post_title" href="/posts/98d20436/" title="亿人云 安裝文檔(五) 主題問答">
-                                        亿人云 安裝文檔(五) 主題問答
-                                    </div>
-                                    <time class="aside-post_meta post-meta__date" title="發表於 2020-05-28 22:38:21">2020-05-28</time>
-                                </div></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-widget card-ad">
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8919908724705274" data-ad-slot="8108145410" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
-            </div>
-            <div class="card-widget card-categories">
-                <div class="card-content">
-                    <div class="item-headline">
-                        <i class="fas fa-folder-open"></i>
-                        <span>分類</span>
-                    </div>
-                    <ul class="card-category-list">
-                        <li class="card-category-list-item"><a class="card-category-list-link" href="/categories/Demo/"><span class="card-category-list-name">Demo</span><span class="card-category-list-count">4</span></a></li>
-                        <li class="card-category-list-item"><a class="card-category-list-link" href="/categories/Docs%E6%96%87%E6%AA%94/"><span class="card-category-list-name">Docs文檔</span><span class="card-category-list-count">8</span></a></li>
-                        <li class="card-category-list-item"><a class="card-category-list-link" href="/categories/Markdown/"><span class="card-category-list-name">Markdown</span><span class="card-category-list-count">2</span></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="card-widget card-tags">
-                <div class="card-content">
-                    <div class="item-headline">
-                        <i class="fas fa-tags"></i>
-                        <span>標籤</span>
-                    </div>
-                    <div class="card-tag-cloud">
-                        <a href="/tags/Bar/" style="font-size:16px;color:#5f2351">Bar</a>
-                        <a href="/tags/Demo/" style="font-size:18px;color:#8c1d5e">Demo</a>
-                        <a href="/tags/Xppd/" style="font-size:16px;color:#297c9a">Xppd</a>
-                        <a href="/tags/butterfly/" style="font-size:17px;color:#46c30c">butterfly</a>
-                        <a href="/tags/demo/" style="font-size:19px;color:#91bf23">demo</a>
-                        <a href="/tags/highlight/" style="font-size:17px;color:#1ab24a">highlight</a>
-                        <a href="/tags/%E4%B8%BB%E9%A1%8C/" style="font-size:20px;color:#c505ae">主題</a>
-                        <a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size:17px;color:#b70a51">教程</a>
-                        <a href="/tags/%E6%A8%99%E7%B1%A4%E5%A4%96%E6%8E%9B/" style="font-size:21px;color:#423920">標籤外掛</a>
-                    </div>
-                </div>
-            </div>
-            <div class="card-widget card-archives">
-                <div class="card-content">
-                    <div class="item-headline">
-                        <i class="fas fa-archive"></i>
-                        <span>歸檔</span>
-                    </div>
-                    <ul class="card-archive-list">
-                        <li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/06/"><span class="card-archive-list-date">2020年06月</span><span class="card-archive-list-count">1</span></a></li>
-                        <li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/05/"><span class="card-archive-list-date">2020年05月</span><span class="card-archive-list-count">9</span></a></li>
-                        <li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/03/"><span class="card-archive-list-date">2020年03月</span><span class="card-archive-list-count">1</span></a></li>
-                        <li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/01/"><span class="card-archive-list-date">2020年01月</span><span class="card-archive-list-count">1</span></a></li>
-                        <li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/07/"><span class="card-archive-list-date">2019年07月</span><span class="card-archive-list-count">1</span></a></li>
-                        <li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2018/07/"><span class="card-archive-list-date">2018年07月</span><span class="card-archive-list-count">1</span></a></li>
-                        <li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2013/12/"><span class="card-archive-list-date">2013年12月</span><span class="card-archive-list-count">1</span></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="card-widget card-webinfo">
-                <div class="card-content">
-                    <div class="item-headline">
-                        <i class="fas fa-chart-line"></i>
-                        <span>網站資訊</span>
-                    </div>
-                    <div class="webinfo">
-                        <div class="webinfo-item">
-                            <div class="webinfo-article-name">
-                                文章數目 :
+                                <p>
+                                    本栏目主要介绍DeDeCMS网站内容管理系统，使用dede常见的问题，常用标签，插件，提供建站帮助
+                                </p>
+                                <a href="#" class="btn">
+                                    阅读更多
+                                </a>
                             </div>
-                            <div class="webinfo-article-count">
-                                15
-                            </div>
-                        </div>
-                        <div class="webinfo-item">
-                            <div class="webinfo-runtime-name">
-                                已執行時間 :
-                            </div>
-                            <div class="webinfo-runtime-count" id="webinfo-runtime-count" publish_date="2019/11/13 00:00:00">
-                            </div>
-                        </div>
-                        <div class="webinfo-item">
-                            <div class="webinfo-site-wordcount-name">
-                                本站總字數 :
-                            </div>
-                            <div class="webinfo-site-wordcount">
-                                31.6k
-                            </div>
-                        </div>
-                        <div class="webinfo-item">
-                            <div class="webinfo-site-uv-name">
-                                本站訪客數 :
-                            </div>
-                            <div class="webinfo-site-uv-count" id="busuanzi_value_site_uv"></div>
-                        </div>
-                        <div class="webinfo-item">
-                            <div class="webinfo-site-name">
-                                本站總訪問量 :
-                            </div>
-                            <div class="webinfo-site-pv-count" id="busuanzi_value_site_pv"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
-    <footer id="footer" style="background-image:url(https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg)" data-type="photo">
-        <div id="footer-wrap">
-            <div class="copyright">
-                &copy;2019 - 2020 By 1ryun
-            </div>
-            <div class="framework-info">
-                <span>框架 </span>
-                <a href="/" target="_blank" rel="noopener external nofollow noreferrer"><span>1ryun.com</span></a>
-                <span class="footer-separator">|</span>
-                <span>主題 </span>
-                <a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener external nofollow noreferrer"><span>Butterfly</span></a>
-            </div>
-        </div>
-    </footer>
+    </div>
 </div>
-<section class="rightside" id="rightside">
-    <div id="rightside-config-hide">
-        <button class="translate_chn_to_cht" id="translateLink" type="button" title="簡繁轉換">簡</button>
-        <button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button>
-    </div>
-    <div id="rightside-config-show">
-        <button id="rightside_config" type="button" title="設定"><i class="fas fa-cog"></i></button>
-        <button id="go-up" type="button" title="回到頂部"><i class="fas fa-arrow-up"></i></button>
-    </div>
-</section>
-<div class="search-dialog" id="local-search">
-    <div class="search-dialog__title" id="local-search-title">
-        本地搜索
-    </div>
-    <div id="local-input-panel">
-        <div id="local-search-input">
-            <div class="local-search-box">
-                <input class="local-search-box--input" placeholder="搜索文章" type="text" />
+<div class="section" id="section3">
+    <div class="fp-tablecell">
+        <div class="page3">
+            <div class="warp-box">
+                <div class="warp">
+                    <div class="inner">
+                        <div class="links">
+                            <ul>
+                                <li class="wow fadeInLeft"><a href="#">关于</a></li>
+                                <li class="wow fadeInRight"><a href="#">+友情链接</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <hr />
-    <div id="local-search-results">
-        <div id="local-hits"></div>
-        <div id="local-stats">
-            <div class="local-search-stats__hr" id="hr">
-                <span>Powered by</span>
-                <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49b1f5">hexo-generator-search</a>
-            </div>
-        </div>
-    </div>
-    <span class="search-close-button"><i class="fas fa-times"></i></span>
 </div>
-<div class="search-mask"></div>
-<script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
-<script>var GLOBAL_CONFIG={root:"/",algolia:void 0,localSearch:{path:"search.xml",languages:{hits_empty:"找不到您查詢的內容:${query}"}},translate:{defaultEncoding:1,translateDelay:0,msgToTraditionalChinese:"繁",msgToSimplifiedChinese:"簡"},noticeOutdate:void 0,copy:{success:"複製成功",error:"複製錯誤",noSupport:"瀏覽器不支援"},bookmark:{message_prev:"按",message_next:"鍵將本頁加入書籤"},runtime_unit:"天",runtime:!0,copyright:{languages:{author:"作者: Jerry",link:"連結: ",source:"來源: 亿人云",info:"著作權歸作者所有。商業轉載請聯絡作者獲得授權，非商業轉載請註明出處。"}},ClickShowText:void 0,medium_zoom:!1,fancybox:!0,Snackbar:void 0,justifiedGallery:{js:"https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js",css:"https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css"},baiduPush:!1,highlightCopy:!0,highlightLang:!0,isPhotoFigcaption:!1,islazyload:!0,isanchor:!0}</script>
-<script>var GLOBAL_CONFIG_SITE={isPost:!1,isHome:!0,isHighlightShrink:!1,isSidebar:!1,postUpdate:"2020-06-25 19:42:35"}</script>
+<div class="section" id="section4">
+    <div class="fp-tablecell">
+        <div class="page4">
+            <div class="warp-box">
+                <div class="about">
+                    <div class="inner">
+                        <h1 class="wow fadeInLeft">ZQ个人博客</h1>
+                        <p class="wow fadeInRight">
+                            一天很短，开心了就笑，不开心了就过会儿再笑。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer wow fadeInUp" id="contact">
+    <div class="footer-top">
+        <div class="container">
+            <div class="layui-row">
+                <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
+                    <div class="single-widget about">
+                        <div class="footer-logo">
+                            <h2>ZQ个人博客</h2>
+                        </div>
+                        <p>世界那么大，我想去看看</p>
+                        <div class="button">
+                            <a href="#" class="btn layui-btn layui-btn-normal">About Me</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
+                    <div class="single-widget">
+                        <h2>相关链接</h2>
+                        <ul class="social-icon">
+                            <li class="active"><a href="#"><i class="fa fa-book"></i>博文</a></li>
+                            <li class="active"><a href="#"><i class="fa fa-comments"></i>留言</a></li>
+                            <li class="active"><a href="#"><i class="fa fa-share"></i>资源</a></li>
+                            <li class="active"><a href="#"><i class="fa fa-snowflake-o"></i>日记</a></li>
+                            <li class="active"><a href="#"><i class="fa fa-files-o"></i>归档</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="layui-col-xs12 layui-col-sm12 layui-col-md4">
+                    <div class="single-widget contact">
+                        <h2>联系我</h2>
+                        <ul class="list">
+                            <li><i class="fa fa-map"></i>地址:深圳市南山区</li>
+                            <li><i class="fa fa-qq"></i>QQ: 1435469178 </li>
+                            <li><i class="fa fa-envelope"></i>邮箱: 1435469178@qq.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <div class="container">
+            <div class="layui-row">
+                <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 text-center">
+                    <p>Copyright &copy; 2019-2020 ZQ个人博客 All Rights Reserved V.5.1.3 粤ICP备1231100号</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 
-<script src="./js/utils.js"></script>
-<script src="./js/search/local-search.js"></script>
-<script src="./js/main.js"></script>
-<script src="./js/tw_cn.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async=""></script>
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
 
-<script src="./js/pageMe.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/typed.js"></script>
+<script src="./assets/layui/layui.js"></script>
+<script src="./assets/wow.min.js"></script>
+<script src="./js/index.js"></script>
 
-<script>var subtitleType = function () {
-    var subtitleEffect = true
-    fetch('https://api.btstu.cn/yan/api.php?charset=utf-8&encode=json',)
-        .then(function (res) {
-            return res.json()
-        })
-        .then(function (data) {
-            if (subtitleEffect) {
-                var sub = "承蒙你出现，够我心烦好多年。".split(',')
-                var both = sub.unshift(data.text)
-                var typed = new Typed('#subtitle', {
-                    strings: sub,
-                    startDelay: 300,
-                    typeSpeed: 150,
-                    loop: true,
-                    backSpeed: 50,
-                })
-            } else {
-                document.getElementById('subtitle').innerHTML = data.text
-            }
-        })
-        .catch(function (err) {
-            console.error(err)
-        })
-
-
-}
-window.addEventListener('load', subtitleType)
-
-</script>
 </body>
 </html>
